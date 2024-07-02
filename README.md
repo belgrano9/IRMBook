@@ -1,4 +1,3 @@
-
 # Interest Rate Models Replication
 
 This project aims to replicate the interest rate models explained in Brigo and Mercurio's book on interest rates using advanced Python structures such as factories and templates.
@@ -15,7 +14,9 @@ This project aims to replicate the interest rate models explained in Brigo and M
 
 ## Introduction
 
-The goal of this project is to deepen understanding of interest rate models by implementing them in Python. The models are based on the frameworks presented in Brigo and Mercurio's book, and the implementation focuses on using advanced Python programming techniques.
+The goal of this project is to deepen understanding of interest rate models by implementing them in Python. However, it also serves to me as practice to handle factories and advanced python designs.
+
+ The models are based on the frameworks presented in Brigo and Mercurio's book, and the implementation focuses on using advanced Python programming techniques.
 
 ## Prerequisites
 
@@ -28,8 +29,8 @@ The goal of this project is to deepen understanding of interest rate models by i
 Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/interest-rate-models.git
-cd interest-rate-models
+git clone https://github.com/belgrano9/IRMBook.git
+cd IRMBook
 ```
 
 Install the required packages:

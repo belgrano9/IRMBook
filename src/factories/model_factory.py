@@ -6,6 +6,7 @@ Contains the factory class for creating model instances.
 
 from ..models.vasicek import VasicekModel
 from ..models.cir import CIRModel
+from ..models.hull_white import HullWhiteModel
 
 
 class ModelFactory:
@@ -15,5 +16,7 @@ class ModelFactory:
             return VasicekModel(**kwargs)
         elif model_type == "CIR":
             return CIRModel(**kwargs)
+        elif model_type == "HullWhite":
+            return HullWhiteModel(**kwargs)
         else:
             raise ValueError(f"Unknown model type: {model_type}")
