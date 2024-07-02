@@ -11,5 +11,9 @@ class InterestRateModel(ABC):
         pass
 
     @abstractmethod
+    def zero_coupon_bond_price(self, *args, **kwargs):
+        pass
+
+    @abstractmethod
     def calibrate(self, *args, **kwargs):
         pass

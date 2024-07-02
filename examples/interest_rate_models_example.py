@@ -44,16 +44,25 @@ def main():
         hw_rates, title="Hull-White Model: Simulated Interest Rate Paths", num_paths=5
     )
 
+    # Create and simulate Dothan model
+    dothan = ModelFactory.create_model("Dothan", r0=r0, sigma=0.1)
+    dothan_rates = dothan.simulate(T, N, n_paths)
+    plot_rate_paths(
+        dothan_rates, title="Dothan Model: Simulated Interest Rate Paths", num_paths=5
+    )
+
     # Compare zero-coupon bond prices
     T_bond = 2  # 2-year bond
     vasicek_price = vasicek.zero_coupon_bond_price(T_bond, r0)
     cir_price = cir.zero_coupon_bond_price(T_bond, r0)
     hw_price = hull_white.zero_coupon_bond_price(T_bond, r0)
+    dothan_price = dothan.zero_coupon_bond_price(T_bond, r0)
 
     print(f"Price of a {T_bond}-year zero-coupon bond:")
     print(f"  Vasicek model: {vasicek_price:.4f}")
     print(f"  CIR model: {cir_price:.4f}")
     print(f"  Hull-White model: {hw_price:.4f}")
+    print(f"  Dothan model: {dothan_price:.4f}")
 
 
 if __name__ == "__main__":
