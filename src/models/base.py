@@ -17,3 +17,11 @@ class InterestRateModel(ABC):
     @abstractmethod
     def calibrate(self, *args, **kwargs):
         pass
+
+    @abstractmethod
+    def mc_path_dependent(self, *args, **kwargs):
+        pass
+
+    @abstractmethod
+    def compute_discount_factor(self, *args, **kwargs):
+        passs

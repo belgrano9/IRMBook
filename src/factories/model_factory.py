@@ -8,6 +8,7 @@ from ..models.vasicek import VasicekModel
 from ..models.cir import CIRModel
 from ..models.hull_white import HullWhiteModel
 from ..models.dothan import DothanModel
+from ..models.extended_vasicek import ExtendedVasicekModel
 
 
 class ModelFactory:
@@ -21,5 +22,8 @@ class ModelFactory:
             return HullWhiteModel(**kwargs)
         elif model_type == "Dothan":
             return DothanModel(**kwargs)
+        elif model_type == "Extended Vasicek":
+            return ExtendedVasicekModel(**kwargs)
+
         else:
             raise ValueError(f"Unknown model type: {model_type}")
