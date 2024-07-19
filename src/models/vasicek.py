@@ -84,19 +84,21 @@ class VasicekModel(InterestRateModel):
     def times(self):
         return np.linspace(0, self.T, self.N + 1)
 
-    def mc_path_dependent(self, error: bool):
+    def mc_path_dependent(self, payoff_func, error=False):
         r = self.simulate()
-        h = np.max(r, axis=1) - r[:, -1]  # Changed to match the product definition
-        P = self.compute_discount_factor(r)
-        d_h = P * h
-        av_d_h = np.mean(d_h)
-        if error:
-            std = np.std(d_h, ddof=1)
-            print(f"{av_d_h:.4f} +- {1.96*std/np.sqrt(len(d_h)):.4f}")
-            return av_d_h, 1.96 * std / np.sqrt(len(d_h))
+        payoffs = payoff_func(r, self.times)
+        discount_factors = self.compute_discount_factor(r)
+        discounted_payoffs = discount_factors * payoffs
 
+        price = np.mean(discounted_payoffs)
+
+        if error:
+            std_error = np.std(discounted_payoffs, ddof=1) / np.sqrt(
+                len(discounted_payoffs)
+            )
+            return price, 1.96 * std_error
         else:
-            return av_d_h
+            return price
 
     def compute_discount_factor(self, rates):
         if rates.ndim == 1:
