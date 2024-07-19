@@ -1,4 +1,8 @@
-# examples/vasicek_mc_example.py
+""" examples/vasicek_mc_example.py
+
+This example shows how to price an spot rate dependent option given the payoff using MonteCarlo method.
+
+"""
 
 import sys
 import os

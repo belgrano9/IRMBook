@@ -16,22 +16,21 @@ def main():
     N = 252  # Number of time steps
     n_paths = 500  # Number of paths to simulate
     r0 = 0.05  # Initial short rate
-
+    sigma = 0.05
+    theta = 0.04
+    k = 0.1
     # Create and simulate models
     models = {
         "Vasicek": ModelFactory.create_model(
-            "Vasicek", r0=r0, k=0.3, theta=0.05, sigma=0.02
-        ),
-        "Extended Vasicek": ModelFactory.create_model(
-            "Extended Vasicek", r0=r0, k=0.3, theta=0.05, sigma=0.02, eta=1, a=1
-        ),
+            "Vasicek", r0=r0, k=k, theta=theta, sigma=sigma, T=T, N=N, n_paths=n_paths
+        )
     }
 
     for model_name, model in models.items():
         if model_name == "HullWhite":
             rates = model.simulate(T, N, n_paths, r0)
         else:
-            rates = model.simulate(T, N, n_paths)
+            rates = model.simulate()
 
         plot_rate_trajectories_with_mean(
             rates,
