@@ -24,4 +24,4 @@ class InterestRateModel(ABC):
 
     @abstractmethod
     def compute_discount_factor(self, *args, **kwargs):
-        passs
+        pass
